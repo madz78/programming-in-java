@@ -13,9 +13,12 @@ public class LinkedListBasedImpl implements StackOfInts {
      */
     @Override
     public int pop() {
+        int temp;
         if (topElem==null){throw new IllegalStateException("To be implemented");}
 
+        temp = topElem.elem;
         topElem = topElem.next;
+        return temp;
     }
 
     /**

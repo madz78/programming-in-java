@@ -1,24 +1,24 @@
-package agh.ii.prinjava.lab02.exc02_01;
+package agh.ii.prinjava.proj1;
 
-/**
- * Stack of integers - Abstract Data Type (ADT)
- */
+import agh.ii.prinjava.proj1.impl.MyStackDLLBImpl;
 
 /**
  * A stack is a pile of object
+ * @param <E>
  */
-public interface StackOfInts {
+
+public interface MyStack<E> {
 
     /**
-     * pop() is used to pull/remove the top element of the stack
+     * pop() is used to pull/remove the top element of the stack.
      */
-    int pop();
+    E pop();
 
     /**
      * Method used to "add" an element in the stack (place to the top of the stack)
-     * @param  x
      */
-    void push(int x);
+    void push(E x);
+
 
     /**
      * Method used to verify if a stack isEmpty
@@ -27,6 +27,7 @@ public interface StackOfInts {
     default boolean isEmpty() {
         return numOfElems() == 0;
     }
+
 
     /**
      * Method used to count how many elements there are in the stack
@@ -37,5 +38,10 @@ public interface StackOfInts {
     /**
      * Returns the value of the top most element without delete it
      */
-    int peek();
+    E peek();
+
+    /** Consider pros and cons of having a factory method in the interface */
+    static <T> MyStack<T> create() {
+        return new MyStackDLLBImpl<T>();
+    }
 }
